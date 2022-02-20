@@ -161,7 +161,8 @@ Module.register("MMM-GoogleCalendarDetail", {
 
     const events = this.createEventList();
 
-    const wrapper = document.createElement("div");
+    //const wrapper = document.createElement("div");
+    const wrapper = document.createElement("table");
     wrapper.className = this.config.divClass + " parent";
 
     if (this.error) {
@@ -198,10 +199,12 @@ Module.register("MMM-GoogleCalendarDetail", {
       );
       if (this.config.timeFormat === "dateheaders") {
         if (lastSeenDate !== dateAsString) {
-          const dateRow = document.createElement("div");
+          // const dateRow = document.createElement("div");
+          const dateRow = document.createElement("tr");
           dateRow.className = "normal row";
 
-          const dateCell = document.createElement("div");
+          // const dateCell = document.createElement("div");
+          const dateCell = document.createElement("td");
           dateCell.colSpan = "3";
           dateCell.innerHTML = dateAsString;
           dateCell.style.paddingTop = "10px";
@@ -218,7 +221,8 @@ Module.register("MMM-GoogleCalendarDetail", {
         }
       }
 
-      const eventWrapper = document.createElement("div");
+      // const eventWrapper = document.createElement("div");
+      const eventWrapper = document.createElement("tr");
       eventWrapper.className = "normal row"
 
       if (this.config.colored && !this.config.coloredSymbolOnly) {
@@ -228,7 +232,8 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       eventWrapper.className = "normal event";
 
-      const symbolWrapper = document.createElement("div");
+      // const symbolWrapper = document.createElement("div");
+      const symbolWrapper = document.createElement("td");
 
       if (this.config.displaySymbol) {
         if (this.config.colored && this.config.coloredSymbolOnly) {
@@ -268,12 +273,14 @@ Module.register("MMM-GoogleCalendarDetail", {
         });
         eventWrapper.appendChild(symbolWrapper);
       } else if (this.config.timeFormat === "dateheaders") {
-        const blankCell = document.createElement("div");
+        // const blankCell = document.createElement("div");
+        const blankCell = document.createElement("td");
         blankCell.innerHTML = "&nbsp;&nbsp;&nbsp;";
         eventWrapper.appendChild(blankCell);
       }
 
-      const titleWrapper = document.createElement("div");
+      // const titleWrapper = document.createElement("div");
+      const titleWrapper = document.createElement("td");
       let repeatingCountTitle = "";
 
       if (
@@ -338,7 +345,8 @@ Module.register("MMM-GoogleCalendarDetail", {
           titleWrapper.colSpan = "2";
           titleWrapper.classList.add("align-left");
         } else {
-          const timeWrapper = document.createElement("div");
+          // const timeWrapper = document.createElement("div");
+          const timeWrapper = document.createElement("td");
           timeWrapper.className =
             "time light align-left " +
             this.timeClassForCalendar(event.calendarID);
@@ -350,7 +358,8 @@ Module.register("MMM-GoogleCalendarDetail", {
 
         eventWrapper.appendChild(titleWrapper);
       } else {
-        const timeWrapper = document.createElement("div");
+        // const timeWrapper = document.createElement("div");
+        const timeWrapper = document.createElement("td");
 
         eventWrapper.appendChild(titleWrapper);
         const now = new Date();
@@ -463,9 +472,11 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       if (this.config.showLocation) {
         if (event.location) {
-          const locationRow = document.createElement("div");
+          // const locationRow = document.createElement("div");
+          const locationRow = document.createElement("tr");
           locationRow.className = "normal row xsmall light";
-          const locDescCell = document.createElement("div");
+          // const locDescCell = document.createElement("div");
+          const locDescCell = document.createElement("td");
           locDescCell.className = "location";
           if (this.config.displaySymbol) {
             locDescCell.colSpan = "3";
@@ -492,9 +503,11 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       // add description
       if (event.description) {
-        const descriptionRow = document.createElement("div");
+        // const descriptionRow = document.createElement("div");
+        const descriptionRow = document.createElement("tr");
         descriptionRow.className = "normal row xsmall light";
-        const descCell = document.createElement("div");
+        // const descCell = document.createElement("div");
+        const descCell = document.createElement("td");
         descCell.className = "description";
         if (this.config.displaySymbol) {
           descCell.colSpan = "3";
