@@ -7,54 +7,63 @@
 Module.register("MMM-GoogleCalendarDetail", {
   // Define module defaults
   defaults: {
+    // module wide settings
     maximumEntries: 5, // Total Maximum Entries
     maximumNumberOfDays: 365,
     limitDays: 0, // Limit the number of days shown, 0 = no limit
-    displaySymbol: true,
-    defaultSymbol: "calendar", // Fontawesome Symbol see https://fontawesome.com/cheatsheet?from=io
-    showLocation: true,
-    displayRepeatingCountTitle: false,
-    defaultRepeatingCountTitle: "",
-    maxTitleLength: 25,
-    maxLocationTitleLength: 60,
-    wrapEvents: false, // wrap events to multiple lines breaking at maxTitleLength
-    wrapLocationEvents: false,
-    maxTitleLines: 3,
-    maxEventTitleLines: 3,
     fetchInterval: 5 * 60 * 1000, // Update every 5 minutes.
     animationSpeed: 2000,
     fade: false,
     urgency: 7,
-    timeFormat: "relative",
-    dateFormat: "MMM Do",
-    dateEndFormat: "LT",
-    fullDayEventDateFormat: "MMM Do",
-    showEnd: false,
-    getRelative: 6,
+    // display settings
     fadePoint: 0.25, // Start on 1/4th of the list.
     hidePrivate: false,
-    hideOngoing: false,
-    hideTime: false,
     colored: true,
     coloredSymbolOnly: false,
     customEvents: [], // Array of {keyword: "", symbol: "", color: ""} where Keyword is a regexp and symbol/color are to be applied for matched
-    tableClass: "small",
+    divClass: "small",
     calendars: [
       {
         symbol: "calendar",
         url: "https://www.calendarlabs.com/templates/ical/US-Holidays.ics"
       }
     ],
+    // title settings
+    displayRepeatingCountTitle: false,
+    defaultRepeatingCountTitle: "",
+    maxTitleLength: 25,
+    wrapEvents: false, // wrap events to multiple lines breaking at maxTitleLength
+    maxTitleLines: 3,
+    maxEventTitleLines: 3,
     titleReplace: {
       "De verjaardag van ": "",
       "'s birthday": ""
     },
+    // symbol settings
+    displaySymbol: true,
+    defaultSymbol: "calendar", // Fontawesome Symbol see https://fontawesome.com/cheatsheet?from=io
+
+    // time settings
+    timeFormat: "relative",
+    dateFormat: "MMM Do",
+    dateEndFormat: "LT",
+    fullDayEventDateFormat: "MMM Do",
+    showEnd: false,
+    getRelative: 6,
+    hideOngoing: false,
+    hideTime: false,
+    sliceMultiDayEvents: false,
+    nextDaysRelative: false,
+    // location settings
+    showLocation: true,
+    maxLocationTitleLength: 60,
+    wrapLocationEvents: false,
     locationTitleReplace: {
       "street ": ""
     },
+    // description settings
+    showDescription: true,
     broadcastEvents: false,
-    sliceMultiDayEvents: false,
-    nextDaysRelative: false
   },
 
   requiresVersion: "2.1.0",
@@ -450,7 +459,7 @@ Module.register("MMM-GoogleCalendarDetail", {
         currentFadeStep = index - startFade;
         eventWrapper.style.opacity = 1 - (1 / fadeSteps) * currentFadeStep;
       }
-      
+
       if (this.config.showLocation) {
         if (event.location) {
           const locationRow = document.createElement("tr");
@@ -479,7 +488,7 @@ Module.register("MMM-GoogleCalendarDetail", {
           }
         }
       }
-      
+
       // add description
       if (event.description) {
         const descriptionRow = document.createElement("tr");
