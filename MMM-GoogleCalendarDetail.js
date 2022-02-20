@@ -70,7 +70,7 @@ Module.register("MMM-GoogleCalendarDetail", {
 
   // Define required scripts.
   getStyles: function () {
-    return ["calendar.css", "font-awesome.css"];
+    return ["MMM-GoogleCalendarDetail.css", "font-awesome.css"];
   },
 
   // Define required scripts.
