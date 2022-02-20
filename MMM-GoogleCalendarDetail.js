@@ -161,8 +161,8 @@ Module.register("MMM-GoogleCalendarDetail", {
 
     const events = this.createEventList();
 
-    const wrapper = document.createElement("table");
-    wrapper.className = this.config.divClass;
+    const wrapper = document.createElement("div");
+    wrapper.className = this.config.divClass + " parent";
 
     if (this.error) {
       wrapper.innerHTML = this.error;
@@ -198,10 +198,10 @@ Module.register("MMM-GoogleCalendarDetail", {
       );
       if (this.config.timeFormat === "dateheaders") {
         if (lastSeenDate !== dateAsString) {
-          const dateRow = document.createElement("tr");
-          dateRow.className = "normal";
+          const dateRow = document.createElement("div");
+          dateRow.className = "normal row";
 
-          const dateCell = document.createElement("td");
+          const dateCell = document.createElement("div");
           dateCell.colSpan = "3";
           dateCell.innerHTML = dateAsString;
           dateCell.style.paddingTop = "10px";
@@ -218,7 +218,8 @@ Module.register("MMM-GoogleCalendarDetail", {
         }
       }
 
-      const eventWrapper = document.createElement("tr");
+      const eventWrapper = document.createElement("div");
+      eventWrapper.className = "normal row"
 
       if (this.config.colored && !this.config.coloredSymbolOnly) {
         eventWrapper.style.cssText =
@@ -227,7 +228,7 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       eventWrapper.className = "normal event";
 
-      const symbolWrapper = document.createElement("td");
+      const symbolWrapper = document.createElement("div");
 
       if (this.config.displaySymbol) {
         if (this.config.colored && this.config.coloredSymbolOnly) {
@@ -267,12 +268,12 @@ Module.register("MMM-GoogleCalendarDetail", {
         });
         eventWrapper.appendChild(symbolWrapper);
       } else if (this.config.timeFormat === "dateheaders") {
-        const blankCell = document.createElement("td");
+        const blankCell = document.createElement("div");
         blankCell.innerHTML = "&nbsp;&nbsp;&nbsp;";
         eventWrapper.appendChild(blankCell);
       }
 
-      const titleWrapper = document.createElement("td");
+      const titleWrapper = document.createElement("div");
       let repeatingCountTitle = "";
 
       if (
@@ -337,7 +338,7 @@ Module.register("MMM-GoogleCalendarDetail", {
           titleWrapper.colSpan = "2";
           titleWrapper.classList.add("align-left");
         } else {
-          const timeWrapper = document.createElement("td");
+          const timeWrapper = document.createElement("div");
           timeWrapper.className =
             "time light align-left " +
             this.timeClassForCalendar(event.calendarID);
@@ -349,7 +350,7 @@ Module.register("MMM-GoogleCalendarDetail", {
 
         eventWrapper.appendChild(titleWrapper);
       } else {
-        const timeWrapper = document.createElement("td");
+        const timeWrapper = document.createElement("div");
 
         eventWrapper.appendChild(titleWrapper);
         const now = new Date();
@@ -462,9 +463,9 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       if (this.config.showLocation) {
         if (event.location) {
-          const locationRow = document.createElement("tr");
-          locationRow.className = "normal xsmall light";
-          const locDescCell = document.createElement("td");
+          const locationRow = document.createElement("div");
+          locationRow.className = "normal row xsmall light";
+          const locDescCell = document.createElement("div");
           locDescCell.className = "location";
           if (this.config.displaySymbol) {
             locDescCell.colSpan = "3";
@@ -491,9 +492,9 @@ Module.register("MMM-GoogleCalendarDetail", {
 
       // add description
       if (event.description) {
-        const descriptionRow = document.createElement("tr");
-        descriptionRow.className = "normal xsmall light";
-        const descCell = document.createElement("td");
+        const descriptionRow = document.createElement("div");
+        descriptionRow.className = "normal row xsmall light";
+        const descCell = document.createElement("div");
         descCell.className = "description";
         if (this.config.displaySymbol) {
           descCell.colSpan = "3";
