@@ -1,4 +1,4 @@
-.calendar .symbol {
+.MMM-GoogleCalendarDetail .symbol {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -7,16 +7,16 @@
   font-size: var(--font-size-small);
 }
 
-.calendar .symbol span {
+.MMM-GoogleCalendarDetail .symbol span {
   padding-top: 4px;
 }
 
-.calendar .title {
+.MMM-GoogleCalendarDetail .title {
   padding-left: 0;
   padding-right: 0;
 }
 
-.calendar .time {
+.MMM-GoogleCalendarDetail .time {
   padding-left: 30px;
   text-align: right;
   vertical-align: top;
