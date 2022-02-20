@@ -162,11 +162,11 @@ Module.register("MMM-GoogleCalendarDetail", {
     const events = this.createEventList();
 
     const wrapper = document.createElement("table");
-    wrapper.className = this.config.tableClass;
+    wrapper.className = this.config.divClass;
 
     if (this.error) {
       wrapper.innerHTML = this.error;
-      wrapper.className = this.config.tableClass + " dimmed";
+      wrapper.className = this.config.divClass + " dimmed";
       return wrapper;
     }
 
@@ -174,7 +174,7 @@ Module.register("MMM-GoogleCalendarDetail", {
       wrapper.innerHTML = this.loaded
         ? this.translate("EMPTY")
         : this.translate("LOADING");
-      wrapper.className = this.config.tableClass + " dimmed";
+      wrapper.className = this.config.divClass + " dimmed";
       return wrapper;
     }
 
